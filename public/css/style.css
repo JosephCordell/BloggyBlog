@@ -1,4 +1,14 @@
-/* *{ border: 1px solid red; } */
+:root {
+    --primary: #010c1a;
+    --secondary: #6593e9;
+    --tertiary: #4ccfcf;
+    --light-dark: #3174c0;
+    --dark: #2596be;
+    --border-radius: 0.3rem;
+  }
+  
+
+
 h1 {
     padding: 20px;
     text-decoration: none;
@@ -262,3 +272,51 @@ section {
     justify-content: center;
     font-weight: bold;
 }
+
+
+
+/* CARDS */
+.card {
+    margin: 0 0 20px 0;
+    border: 3px solid var(--dark);
+    border-radius: var(--border-radius);
+    padding: 10%;
+  }
+  
+  .card-header {
+    color: var(--primary);
+    background-color: var(--dark);
+    padding: 1%;
+    border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+  }
+  
+  .card-body {
+    padding: 1%;
+  }
+  
+  /* FORM */
+  .form-label,
+  .form-input,
+  .form-textarea {
+    display: block;
+  }
+  
+  .form-label {
+    font-size: 1.1rem;
+    margin: 0 0 0 5px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 1%;
+    margin: 5px 0;
+    font-size: 1.2rem;
+    border: 2px solid var(--light-dark);
+    border-radius: var(--border-radius);
+  }
+  
+  .btn {
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+  }

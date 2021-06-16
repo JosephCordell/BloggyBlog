@@ -41,7 +41,6 @@ router.post('/logout', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    console.log('1');
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
