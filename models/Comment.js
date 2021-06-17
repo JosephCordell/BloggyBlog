@@ -7,14 +7,14 @@ Comment.init(
   {
     body: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Comment'
+    modelName: 'Comment',
   }
 );
 

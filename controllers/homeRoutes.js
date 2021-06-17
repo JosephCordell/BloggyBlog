@@ -7,8 +7,8 @@ router.get('/dashboard', async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
-        user_id: req.session.user_id
-      }
+        user_id: req.session.user_id,
+      },
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -36,8 +36,7 @@ router.get('/post/:id', async (req, res) => {
     if (postData) {
       const post = postData.get({ plain: true });
 
-      res.render('single-post', { post,
-        loggedIn: req.session.logged_in,});
+      res.render('single-post', { post, loggedIn: req.session.logged_in });
     } else {
       res.status(404).end();
     }
@@ -48,13 +47,12 @@ router.get('/post/:id', async (req, res) => {
 
 router.get('/edit/:id', async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id)
+    const postData = await Post.findByPk(req.params.id);
 
     if (postData) {
       const post = postData.get({ plain: true });
 
-      res.render('edit', { post,
-        loggedIn: req.session.logged_in,});
+      res.render('edit', { post, loggedIn: req.session.logged_in });
     } else {
       res.status(404).end();
     }
@@ -62,8 +60,6 @@ router.get('/edit/:id', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-
 
 router.get('/login', (req, res) => {
   try {
