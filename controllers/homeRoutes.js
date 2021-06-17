@@ -6,8 +6,11 @@ const withAuth = require('../utils/auth');
 router.get('/dashboard', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [User],
+      where: {
+        user_id: req.session.user_id
+      }
     });
+
     const posts = postData.map((post) => post.get({ plain: true }));
     res.render('dashboard', {
       posts,
@@ -42,6 +45,25 @@ router.get('/post/:id', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+router.get('/edit/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id)
+
+    if (postData) {
+      const post = postData.get({ plain: true });
+
+      res.render('edit', { post,
+        loggedIn: req.session.logged_in,});
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 
 router.get('/login', (req, res) => {
   try {
@@ -95,9 +117,14 @@ router.get('/signup', async (req, res) => {
   }
 });
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
+    const postData = await Post.findAll({
+      include: [User],
+    });
+    const posts = postData.map((post) => post.get({ plain: true }));
     res.render('homepage', {
+      posts,
       id: req.session.user_id,
       loggedIn: req.session.logged_in,
     });

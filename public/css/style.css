@@ -198,6 +198,7 @@ section {
     color: white;
 }
 
+
 /* Modal Header */
 .modal-header {
     padding: 2px 16px;
@@ -277,10 +278,11 @@ section {
 
 /* CARDS */
 .card {
-    margin: 0 0 20px 0;
+    margin:  20px;
     border: 3px solid var(--dark);
     border-radius: var(--border-radius);
-    padding: 10%;
+    padding: 20px;
+    
   }
   
   .card-header {
@@ -316,7 +318,11 @@ section {
   }
   
   .btn {
+      display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
+  }
+
+  .btn-primary {
+      margin: 20px;
   }

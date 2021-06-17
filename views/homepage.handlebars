@@ -4,3 +4,21 @@
         <p class="col-md-8 fs-4">Welcome to bloggy blog. A blog where I blog about tech.</p>
     </div>
 </div>
+
+<div class="posts">
+  {{#each posts}}
+  <article class="card">
+    <div class="card-header flex-row justify-space-between">
+      <h2>
+        <a href="/post/{{id}}">{{title}}</a>
+      </h2>
+      <div>
+        Posted by {{user.name}} on {{format_date createdAt}}
+      </div>
+    </div>
+    <div class="card-body">
+      {{body}}
+    </div>
+  </article>
+  {{/each}}
+</div>
