@@ -99,7 +99,7 @@ router.get('/new', withAuth, async (req, res) => {
     }
 }); */
 
-router.get('/signup', withAuth, async (req, res) => {
+router.get('/signup', async (req, res) => {
   try {
     res.render('signup', {
       id: req.session.user_id,
